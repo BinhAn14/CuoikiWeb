@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${product.productName}">Product Detail</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+        <th:block th:include="/_header_on" th:if="${userdto.email}"></th:block>
+    <th:block th:include="/_header_off" th:unless="${userdto.email}"></th:block>
+<div class="container">
+    <div class="product-card">
+        <h1 class="text-center" th:text="${product.productName}"></h1>
+        <div class="text-center">
+            <img th:src="${product.imageUrl}" alt="Product Image" class="img-fluid" style="max-width: 400px;"/>
+        </div>
+        <p><strong>Description:</strong> <span th:text="${product.description}"></span></p>
+        <p><strong>Price:</strong> <span th:text="${product.price}"></span> VND</p>
+        <p><strong>Stock:</strong> <span th:text="${product.stock}"></span> units</p>
+        <div class="text-center">
+            <a class="btn btn-custom" th:href="@{/cart/add/{id}(id=${product.productId})}">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
