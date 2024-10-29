@@ -21,8 +21,10 @@ public class ProductController {
     @GetMapping
     public String listProducts(Model model) {
         List<Product> products = productService.getAllProducts();
+
         model.addAttribute("products", products);
-        return "list.html"; // Trỏ tới trang danh sách sản phẩm
+        
+        return "list"; // Trỏ tới trang danh sách sản phẩm
     }
 
     @GetMapping("/{id}")
