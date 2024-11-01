@@ -33,4 +33,5 @@ public class ProductController {
         model.addAttribute("product", product);
         return "view"; // Trỏ tới trang xem sản phẩm
     }
+    
 }

@@ -3,32 +3,66 @@
 <head>
     <title>Product List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .table thead th {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+        }
+        .table tbody td {
+            text-align: center;
+        }
+        .btn-info {
+            background-color: #28a745;
+            border-color: #28a745;
+            font-weight: bold;
+        }
+        .btn-info:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+    </style>
 </head>
 <body>
-    <th:block th:include="/_header_on" ></th:block>
+    <th:block th:include="/_header_on"></th:block>
 
-<div class="container">
-    <h1>Product List</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="product : ${products}">
-                <td th:text="${product.productId}"></td>
-                <td th:text="${product.productName}"></td>
-                <td th:text="${product.price}"></td>
-                <td>
-                    <a class="btn btn-info" th:href="@{/products/{id}(id=${product.productId})}">View</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+    <div class="container">
+        <h1>Product List</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="product : ${products}">
+                        <td th:text="${product.productId}"></td>
+                        <td th:text="${product.productName}"></td>
+                        <td th:text="${#numbers.formatDecimal(product.price, 1, 2)}"></td>
+                        <td>
+                            <a class="btn btn-info" th:href="@{/products/{id}(id=${product.productId})}">View</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
