@@ -8,55 +8,75 @@
     <title>Registration</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+          <style>
+            body {
+                background-color: #f8f9fa;
+               
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+            }
+            .card {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 20px;
+            }
+            .alert {
+                font-size: 0.9rem;
+            }
+            .btn {
+                width: 100%;
+            }
+            .text-center {
+                font-size: 0.9rem;
+            }
+        </style>
 </head>
 <body>
 <th:block th:include="/_header_on" th:if="${userdto.email}"></th:block>
 <th:block th:include="/_header_off" th:unless="${userdto.email}"></th:block>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <!-- success message  -->
-                <div th:if="${param.success}">
-                    <div class="alert alert-info"> You are successfull registered to our awsome app!</div>
-                </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <!-- Success Message -->
+                <div th:if="${param.success}" class="alert alert-success text-center">You are successfully registered to our awesome app!</div>
 
-                <h1>Registration</h1>
+                <h2 class="text-center mb-4">Register</h2>
                 <form th:action="@{/registration}" method="post" th:object="${userdto}">
                     <div class="form-group">
-                        <label class="control-label" for="Email"> Email </label>
-                        <input type="text" id="Email" class="form-control" th:field="*{email}" required
-                               autofocus="autofocus"/>
+                        <label for="Email">Email</label>
+                        <input type="email" id="Email" class="form-control" th:field="*{email}" required autofocus>
+                        <div th:if="${param.emailexist}" class="alert alert-danger mt-2">This email already exists. Please try another.</div>
                     </div>
-                    <div th:if="${param.emailexist}">
-                        <div class="alert alert-info"> You email have exist please register other email</div>
+                    
+                    <div class="form-group">
+                        <label for="UserDisplayName">Username</label>
+                        <input type="text" id="UserDisplayName" class="form-control" th:field="*{userDisplayName}" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label" for="UserDisplayName"> UserDisplayName </label>
-                        <input type="text" id="UserDisplayName" class="form-control" th:field="*{userDisplayName}" required/>
+                        <label for="Password">Password</label>
+                        <input type="password" id="Password" class="form-control" th:field="*{password}" required>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label" for="Password"> Password </label>
-                        <input type="password" id="Password" class="form-control" th:field="*{password}" required/>
+                        <label for="checkpass">Confirm Password</label>
+                        <input type="password" id="checkpass" class="form-control" th:field="*{checkPass}" required>
+                        <div th:if="${param.checkpass}" class="alert alert-danger mt-2">Passwords do not match! Please check again.</div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label" for="checkpass"> Check Password </label>
-                        <input type="password" id="checkpass" class="form-control" th:field="*{checkPass}" required/>
+                        <button type="submit" class="btn btn-primary">Register</button>
                     </div>
-
-                    <div th:if="${param.checkpass}">
-                        <div class="alert alert-info"> You password and checkpass not same ! Please  checkout it!</div>
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success">Register</button>
-                        <span>Already registered ? <a href="/" th:href="@{/login}">Login here</a></span>
+                    <div class="text-center mt-3">
+                        <span>Already registered? <a th:href="@{/login}">Login here</a></span>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>

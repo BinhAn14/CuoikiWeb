@@ -8,39 +8,58 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+          <style>
+            body {
+                background-color: #f8f9fa;
+              
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+            }
+            .card {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 20px;
+            }
+            .alert {
+                font-size: 0.9rem;
+            }
+            .btn {
+                width: 100%;
+            }
+            .text-center {
+                font-size: 0.9rem;
+            }
+        </style>
 </head>
 <body>
 <th:block th:include="/_header_on" th:if="${userdto.email}"></th:block>
 <th:block th:include="/_header_off" th:unless="${userdto.email}"></th:block>
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-
-
-            <h1>Login</h1>
-            <form th:action="@{/login}" method="post" th:object="${userdto}">
-                <div class="form-group">
-                    <label class="control-label" for="Email"> Email </label>
-                    <input type="text" id="Email" class="form-control" th:field="*{email}" required
-                           autofocus="autofocus"/>
-                </div>
-                <div th:if="${param.emailwrong}">
-                    <div class="alert alert-info"> Your email is not correct</div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label" for="Password"> Password </label>
-                    <input type="password" id="Password" class="form-control" th:field="*{password}" required/>
-                </div>
-                <div th:if="${param.passwordwrong}">
-                    <div class="alert alert-info"> Your password is not correct</div>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success">Login</button>
-                    <span>Your dont have account? <a href="/" th:href="@{/registration}">Registration here</a></span>
-                </div>
-            </form>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <h2 class="text-center mb-4">Login</h2>
+                <form th:action="@{/login}" method="post" th:object="${userdto}">
+                    <div class="form-group">
+                        <label for="Email">Email</label>
+                        <input type="email" id="Email" class="form-control" th:field="*{email}" required autofocus>
+                        <div th:if="${param.emailwrong}" class="alert alert-danger mt-2">Your email is not correct</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Password">Password</label>
+                        <input type="password" id="Password" class="form-control" th:field="*{password}" required>
+                        <div th:if="${param.passwordwrong}" class="alert alert-danger mt-2">Your password is not correct</div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                    <div class="text-center mt-3">
+                        <span>Don’t have an account? <a th:href="@{/registration}">Register here</a></span>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
