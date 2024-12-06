@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @AllArgsConstructor
 @SessionAttributes("userdto")
-public class DeleteTopicController {
+public class DeleteCommentController {
     @Autowired
     private TopicService topicService;
     @Autowired
@@ -27,8 +27,8 @@ public class DeleteTopicController {
     public UserDto userDto(){
         return new UserDto();
     }
-    @GetMapping("/deletetopic/{id}")
-    public String deleteTopic(@PathVariable String id){
+    @GetMapping("/deletecomment/{id}")
+    public String deleteComment(@PathVariable String id){
         reactService.delete(Integer.parseInt(id));
         commentService.delete(Integer.parseInt(id));
         topicService.delete(Integer.parseInt(id));

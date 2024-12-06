@@ -14,4 +14,5 @@ public interface TopicReponsitory extends JpaRepository<Topic,Integer> {
     Topic findTopicById(Integer id);
     void deleteById(Integer id);
     Integer countTopicByUser_ID(Integer userId);
+    
 }

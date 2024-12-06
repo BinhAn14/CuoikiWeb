@@ -1,0 +1,110 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Control</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css"
+          integrity="sha384-pzjw8f+ua7Kw1TIq0nBvI5fs1qW15sLlER1qb59WlLzD5fHhnyD44HRgUboFyE0i" crossorigin="anonymous">
+    <style>
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #f8f9fa;
+        }
+        .table-striped tbody tr:hover {
+            background-color: #e9ecef;
+        }
+        .btn-action {
+            width: 100px;
+            text-align: center;
+        }
+        .btn-success, .btn-danger {
+            margin-right: 10px;
+        }
+        .alert-info {
+            margin-top: 20px;
+        }
+        .chip {
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<th:block th:include="/_header_admin" th:if="${userdto.email}"></th:block>
+<th:block th:include="/_header_off" th:unless="${userdto.email}"></th:block>
+
+<div class="container mt-5">
+    <!-- Success message -->
+    <div th:if="${param.success}">
+        <div class="alert alert-info">You are successfully registered to our awesome app!</div>
+    </div>
+
+    <h1 class="mb-4">Quản lý User</h1>
+
+    <!-- Add New User Button -->
+    <a href="/user/add" class="btn btn-success mb-3">Add New User</a>
+
+    <!-- Table to display users -->
+    <table class="table table-striped table-bordered text-center" th:if="${users.size() != 0}">
+        <thead class="thead-light">
+            <tr>
+                <th class="col-md-1">Answers</th>
+                <th class="col-md-1">Comments</th>
+                <th class="col-md-2">User Display Name</th>
+                <th class="col-md-2">Email</th>
+                <th class="col-md-2">Create Date</th>
+                <th class="col-md-2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="user : ${users}">
+            <tr>
+                <!-- Display number of answers -->
+                <td th:text="${commentcount.countCommentByUser_ID(user.ID)}">Number of answers</td>
+                <!-- Display number of comments -->
+                <td th:text="*{topiccount.countTopicByUser_ID(user.ID)}">Number of comments</td>
+                <!-- Display user name -->
+                <td>
+                    <div class="chip" th:text="${user.userDisplayName}">User Display Name</div>
+                </td>
+                <!-- Display user email -->
+                <td th:text="*{user.email}">Email</td>
+                <!-- Display creation date -->
+                <td th:text="*{user.creationDate}"> User's created date </td>
+                <!-- Actions (Edit & Delete) -->
+                <td class="btn-action" th:if="${user.role == 'ROLE_USER'}">
+                    <!-- Edit Button -->
+                    <a th:href="@{'/user/edit/' + ${user.ID}}" class="btn btn-primary btn-sm">Edit</a>
+                    
+                    <!-- Delete Button -->
+                    <form th:action="@{'/user/delete/' + ${user.ID}}" method="post" style="display: inline;">
+                        <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+
+    <!-- If no users -->
+    <div th:if="${users.size() == 0}" class="alert alert-warning">
+        No users available.
+    </div>
+    <div class="mb-3 text-center">
+        <a href="#" th:href="@{/admin_home}" class="btn btn-secondary">Quay lại trang Admin</a>
+    </div>
+    
+</div>
+
+</body>
+</html>

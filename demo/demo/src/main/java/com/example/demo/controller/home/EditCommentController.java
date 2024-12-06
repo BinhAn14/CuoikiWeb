@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @SessionAttributes("userdto")
-public class EditTopicController {
+public class EditCommentController {
     @Autowired
     private TopicService topicService;
     private UserService userService;
@@ -24,13 +24,13 @@ public class EditTopicController {
     public UserDto userDto(){
         return new UserDto();
     }
-    @GetMapping("/edit_topic/{id}")
+    @GetMapping("/edit_comment/{id}")
     public String showEditTopic(Model model, @PathVariable String id,@ModelAttribute("userdto") UserDto userDto){
         Topic topic =topicService.findTopicById(Integer.parseInt(id));
         model.addAttribute("topic",topic);
-        return "edit_topic";
+        return "edit_comment";
     }
-    @PostMapping("/edit_topic/{id}")
+    @PostMapping("/edit_comment/{id}")
     public String updateTopic(Model model, @PathVariable String id,
                               @ModelAttribute("userdto") UserDto userDto,
                               @ModelAttribute("topic") TopicDto topicDto){

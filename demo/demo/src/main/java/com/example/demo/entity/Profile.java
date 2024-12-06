@@ -34,7 +34,7 @@ public class Profile implements Serializable {
     @Column(name="adress",nullable = false)
     private String Adress;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="user_id")
     private User user;
 

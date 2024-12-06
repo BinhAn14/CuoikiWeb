@@ -21,45 +21,23 @@
     <th:block th:include="/_header_on" th:if="${userdto.email}"></th:block>
     <th:block th:include="/_header_off" th:unless="${userdto.email}"></th:block>
     
-   <!-- Sports Merchandise Section -->
-<div class="container my-5">
-    <h1 class="text-center mb-4">Sports Merchandise</h1>
-    <div class="row">
-        <!-- Product 1 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="https://bizweb.dktcdn.net/100/340/361/products/ao-thun-3-soc-future-icons-djen-ir9166-01-laydown.jpg?v=1724650755870" alt="Product Image 1" class="img-fluid" style="height: 250px; object-fit: cover;"/>
-                <div class="card-body">
-                    <h5 class="card-title">Áo Thun Nam</h5>
-                    <p class="card-text">Áo thun thể thao nam</p>
-                    <a href="/products/1" class="btn btn-primary">Buy Now</a>
-                </div>
-            </div>
-        </div>
-        <!-- Product 2 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnJWDlkeBc0r_WveklXijMAMZFHHt4g_x_aA&s" alt="Product Image 2" class="img-fluid" style="height: 250px; object-fit: cover;"/>
-                <div class="card-body">
-                    <h5 class="card-title">Quần Shorts Nữ</h5>
-                    <p class="card-text">Quần Shorts Nữ</p>
-                    <a href="/products/2" class="btn btn-primary">Buy Now</a>
-                </div>
-            </div>
-        </div>
-        <!-- Product 3 -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB9Nl8TDu93Ll33xdsqCZ1xUjeO9GcfJ0jyA&s" alt="Product Image 3" class="img-fluid" style="height: 250px; object-fit: cover;"/>
-                <div class="card-body">
-                    <h5 class="card-title">Giày Chạy Bộ</h5>
-                    <p class="card-text">Giày chạy bộ</p>
-                    <a href="/products/3" class="btn btn-primary">Buy Now</a>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Sports Merchandise</h1>
+        <div class="row">
+            <!-- Hiển thị danh sách sản phẩm, chỉ lấy 3 sản phẩm đầu tiên -->
+            <div class="col-md-4 mb-4" th:each="product : ${products}">
+                <div class="card">
+                    <img th:src="${product.imageUrl}" alt="Product Image" class="img-fluid" style="height: 250px; object-fit: cover;"/>
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${product.productName}">Tên sản phẩm</h5>
+                        <p class="card-text" th:text="${product.description}">Mô tả sản phẩm</p>
+                        <a th:href="@{/products/{id}(id=${product.productId})}" class="btn btn-primary">Buy Now</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    
 
 
     
@@ -100,10 +78,10 @@
                         </td>
                         <td th:if="${userdto.email == topic.user.email}">
                             <button class="btn btn-primary text-white" type="button">
-                                <a th:href="@{'/edit_topic/'+${topic.id}}" class="text-white">Edit</a>
+                                <a th:href="@{'/edit_comment/'+${topic.id}}" class="text-white">Edit</a>
                             </button>
                             <button class="btn btn-danger" type="button">
-                                <a th:href="@{'/deletetopic/'+${topic.id}}" class="text-white" method=RequestMethod.GET>Delete</a>
+                                <a th:href="@{'/deletecomment/'+${topic.id}}" class="text-white" method=RequestMethod.GET>Delete</a>
                             </button>
                         </td>
                     </tr>

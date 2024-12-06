@@ -8,62 +8,71 @@
     <title>Registration</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- FontAwesome icons -->
     <style>
-        /* Custom styles for the navbar */
         .navbar {
-            background-color: #343a40; /* Dark background */
+            background-color: #343a40;
         }
 
         .navbar-brand {
-            font-size: 1.5rem; /* Brand size */
-            font-weight: bold; /* Brand weight */
+            font-size: 1.5rem;
+            font-weight: bold;
         }
 
         .nav-link {
-            font-size: 1.1rem; /* Link size */
-            transition: color 0.3s; /* Smooth transition for hover */
+            font-size: 1.1rem;
+            transition: color 0.3s;
         }
 
         .nav-link:hover {
-            color: #007bff; /* Change color on hover */
+            color: #007bff;
+        }
+
+        .nav-link i {
+            margin-right: 8px;
         }
     </style>
 </head>
 <body>
-    <!--Start : Header-->
-    <nav class="navbar navbar-expand-md navbar-dark">
-        <!-- Brand -->
-        <a class="navbar-brand" href="#">Forum Web</a>
-
-        <!-- Toggler/collapsibe Button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Navbar links -->
-        <div class="collapse navbar-collapse d-flex" id="collapsibleNavbar">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{'/home'}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{'/newtopic'}">Comment</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{'products'}">Products</a>
-                </li>
-            </ul>
-
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/profile}">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/logout}" method=RequestMethod.GET>Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <!--End : Header-->
+<nav class="navbar navbar-expand-md navbar-dark">
+    <a class="navbar-brand" href="#">🌟 Shino Web</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex" id="collapsibleNavbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{'/home'}">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{'/newtopic'}">
+                    <i class="fas fa-comment-dots"></i> Comment
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{'products'}">
+                    <i class="fas fa-box"></i> Products
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/profile}">
+                    <i class="fas fa-user"></i> Profile
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}" method=RequestMethod.GET>
+                    <i class="fas fa-sign-out-alt"></i> Login
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>
