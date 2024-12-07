@@ -27,7 +27,7 @@
             <!-- Phần chỉnh sửa thông tin cá nhân -->
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
-                    <form th:action="@{'/profile/'+ ${profile.id}}" method="post" th:object="${profile}">
+                    <form th:if="${profile != null}" th:action="@{'/profile/'+ ${profile.id}}" method="post" th:object="${profile}">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="text-right">Chỉnh sửa thông tin cá nhân</h4>
                         </div>

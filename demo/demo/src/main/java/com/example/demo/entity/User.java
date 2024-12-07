@@ -43,6 +43,9 @@ public class User implements Serializable {
 
     @Column(name = "role",nullable = false)
     private String Role;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+private Profile profile;
+
 
 
     public User(String Email, String userDisplayName, String aboutMe, int views, int topicCounts, String password, String creationDate, String role) {

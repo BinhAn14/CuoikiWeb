@@ -22,9 +22,9 @@
     <th:block th:include="/_header_off" th:unless="${userdto.email}"></th:block>
     
     <div class="container my-5">
-        <h1 class="text-center mb-4">Sports Merchandise</h1>
+        <h1 class="text-center mb-4">Sản phẩm nổi bật</h1>
         <div class="row">
-            <!-- Hiển thị danh sách sản phẩm, chỉ lấy 3 sản phẩm đầu tiên -->
+            <!-- Hiển thị danh sách sản phẩm-->
             <div class="col-md-4 mb-4" th:each="product : ${products}">
                 <div class="card">
                     <img th:src="${product.imageUrl}" alt="Product Image" class="img-fluid" style="height: 250px; object-fit: cover;"/>
