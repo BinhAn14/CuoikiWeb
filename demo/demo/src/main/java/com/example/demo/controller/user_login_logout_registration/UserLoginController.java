@@ -1,7 +1,7 @@
 package com.example.demo.controller.user_login_logout_registration;
 
 import com.example.demo.dto.UserDto;
-import com.example.demo.entity.User;
+import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;

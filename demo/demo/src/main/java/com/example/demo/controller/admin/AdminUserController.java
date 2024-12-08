@@ -1,7 +1,7 @@
 package com.example.demo.controller.admin;
 
 import com.example.demo.dto.UserDto;
-import com.example.demo.entity.User;
+import com.example.demo.model.User;
 import com.example.demo.reponsitory.CommentReponsitory;
 import com.example.demo.reponsitory.TopicReponsitory;
 import com.example.demo.reponsitory.UserReponsitory;

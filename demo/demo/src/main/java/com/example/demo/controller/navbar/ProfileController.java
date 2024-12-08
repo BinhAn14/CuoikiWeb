@@ -2,8 +2,8 @@ package com.example.demo.controller.navbar;
 
 import com.example.demo.dto.ProfileDto;
 import com.example.demo.dto.UserDto;
-import com.example.demo.entity.Profile;
-import com.example.demo.entity.User;
+import com.example.demo.model.Profile;
+import com.example.demo.model.User;
 import com.example.demo.reponsitory.ProfileReponsitory;
 import com.example.demo.service.ProfileService;
 import com.example.demo.service.UserService;
