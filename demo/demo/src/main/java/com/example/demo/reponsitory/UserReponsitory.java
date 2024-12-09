@@ -1,9 +1,11 @@
 package com.example.demo.reponsitory;
 
-import com.example.demo.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
+
+import com.example.demo.model.User;
+
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;

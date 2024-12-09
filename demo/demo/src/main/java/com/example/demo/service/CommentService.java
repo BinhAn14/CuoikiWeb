@@ -1,9 +1,10 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.CommentDto;
-import com.example.demo.entity.Comment;
-import com.example.demo.entity.Topic;
-import com.example.demo.entity.User;
+import com.example.demo.model.Comment;
+import com.example.demo.model.Topic;
+import com.example.demo.model.User;
+
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

@@ -1,8 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.ProfileDto;
-import com.example.demo.entity.Profile;
-import com.example.demo.entity.User;
+import com.example.demo.model.Profile;
+import com.example.demo.model.User;
+
 import org.springframework.stereotype.Service;
 
 @Service

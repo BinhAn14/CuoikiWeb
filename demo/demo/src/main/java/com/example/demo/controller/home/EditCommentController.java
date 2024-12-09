@@ -2,7 +2,7 @@ package com.example.demo.controller.home;
 
 import com.example.demo.dto.TopicDto;
 import com.example.demo.dto.UserDto;
-import com.example.demo.entity.Topic;
+import com.example.demo.model.Topic;
 import com.example.demo.service.TopicService;
 import com.example.demo.service.UserService;
 import lombok.AllArgsConstructor;

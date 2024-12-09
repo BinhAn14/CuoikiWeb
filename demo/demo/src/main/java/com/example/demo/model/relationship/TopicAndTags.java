@@ -1,12 +1,14 @@
-package com.example.demo.entity.relationship;
+package com.example.demo.model.relationship;
 
-import com.example.demo.entity.Tags;
-import com.example.demo.entity.Topic;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import com.example.demo.model.Tags;
+import com.example.demo.model.Topic;
+
 import java.io.Serializable;
 
 @Entity

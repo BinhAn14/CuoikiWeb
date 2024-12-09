@@ -1,8 +1,8 @@
     package com.example.demo.controller.home;
 
     import com.example.demo.dto.UserDto;
-import com.example.demo.entity.Product;
-import com.example.demo.entity.Topic;
+import com.example.demo.model.Product;
+import com.example.demo.model.Topic;
 import com.example.demo.reponsitory.ProductReponsitory;
 import com.example.demo.reponsitory.TopicReponsitory;
     import com.example.demo.service.CommentService;

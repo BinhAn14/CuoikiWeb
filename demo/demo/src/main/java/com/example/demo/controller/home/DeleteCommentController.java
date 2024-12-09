@@ -1,7 +1,7 @@
 package com.example.demo.controller.home;
 
 import com.example.demo.dto.UserDto;
-import com.example.demo.entity.Reacts;
+import com.example.demo.model.Reacts;
 import com.example.demo.service.CommentService;
 import com.example.demo.service.ReactService;
 import com.example.demo.service.TopicService;

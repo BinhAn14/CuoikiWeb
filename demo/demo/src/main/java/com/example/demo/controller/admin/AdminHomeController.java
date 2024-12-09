@@ -1,7 +1,7 @@
 package com.example.demo.controller.admin;
 
 import com.example.demo.dto.UserDto;
-import com.example.demo.entity.Topic;
+import com.example.demo.model.Topic;
 import com.example.demo.reponsitory.TopicReponsitory;
 import com.example.demo.service.CommentService;
 import lombok.AllArgsConstructor;

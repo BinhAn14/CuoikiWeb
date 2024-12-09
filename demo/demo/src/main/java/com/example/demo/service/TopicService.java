@@ -1,8 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.TopicDto;
-import com.example.demo.entity.Topic;
-import com.example.demo.entity.User;
+import com.example.demo.model.Topic;
+import com.example.demo.model.User;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
