@@ -13,7 +13,6 @@
 <th:block th:include="/_header_off" th:unless="${userdto.email}"></th:block>
 
 <div class="container my-4">
-    <!-- Topic Card -->
     <div class="card mb-3 shadow-sm border-0">
         <div class="card-header bg-primary text-white">
             <h3 class="mb-0">Title: <span th:text="${topic.title}"></span></h3>
@@ -40,7 +39,6 @@
         </div>
     </div>
 
-    <!-- Answers Section -->
     <div class="card mb-3 shadow-sm border-0">
         <div class="card-header bg-light">
             <h5 class="mb-0" th:text="${commentcount.countComment(topic.id)} + ' Answers'">Answers</h5>

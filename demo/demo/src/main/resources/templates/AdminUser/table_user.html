@@ -51,10 +51,8 @@
 
     <h1 class="mb-4">Quản lý User</h1>
 
-    <!-- Add New User Button -->
     <a href="/user/add" class="btn btn-success mb-3">Add New User</a>
 
-    <!-- Table to display users -->
     <table class="table table-striped table-bordered text-center" th:if="${users.size() != 0}">
         <thead class="thead-light">
             <tr>
@@ -69,24 +67,16 @@
         <tbody>
         <th:block th:each="user : ${users}">
             <tr>
-                <!-- Display number of answers -->
                 <td th:text="${commentcount.countCommentByUser_ID(user.ID)}">Number of answers</td>
-                <!-- Display number of comments -->
                 <td th:text="*{topiccount.countTopicByUser_ID(user.ID)}">Number of comments</td>
-                <!-- Display user name -->
                 <td>
                     <div class="chip" th:text="${user.userDisplayName}">User Display Name</div>
                 </td>
-                <!-- Display user email -->
                 <td th:text="*{user.email}">Email</td>
-                <!-- Display creation date -->
                 <td th:text="*{user.creationDate}"> User's created date </td>
-                <!-- Actions (Edit & Delete) -->
                 <td class="btn-action" th:if="${user.role == 'ROLE_USER'}">
-                    <!-- Edit Button -->
                     <a th:href="@{'/user/edit/' + ${user.ID}}" class="btn btn-primary btn-sm">Edit</a>
                     
-                    <!-- Delete Button -->
                     <form th:action="@{'/user/delete/' + ${user.ID}}" method="post" style="display: inline;">
                         <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                     </form>
@@ -96,7 +86,6 @@
         </tbody>
     </table>
 
-    <!-- If no users -->
     <div th:if="${users.size() == 0}" class="alert alert-warning">
         No users available.
     </div>

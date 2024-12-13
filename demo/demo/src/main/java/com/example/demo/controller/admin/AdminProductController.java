@@ -2,6 +2,8 @@ package com.example.demo.controller.admin;
 
 import com.example.demo.model.Product;
 import com.example.demo.reponsitory.ProductReponsitory;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,12 +13,13 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/admin/products")
+@Tag(name = "Quản lý sản phẩm", description = "API dành cho quản trị viên quản lý sản phẩm.")
 public class AdminProductController {
 
     @Autowired
     private ProductReponsitory productRepository;
 
-    // Hiển thị danh sách sản phẩm
+    @Operation(summary = "Hiển thị danh sách sản phẩm", description = "Lấy danh sách tất cả các sản phẩm trong hệ thống.")
     @GetMapping
     public String listProducts(Model model) {
         List<Product> products = productRepository.findAll();
@@ -24,21 +27,21 @@ public class AdminProductController {
         return "AdminProduct/product_list"; // Tên file Thymeleaf để hiển thị danh sách sản phẩm
     }
 
-    // Hiển thị form thêm sản phẩm
+    @Operation(summary = "Hiển thị form thêm sản phẩm", description = "Hiển thị trang để thêm sản phẩm mới.")
     @GetMapping("/add")
     public String showAddProductForm(Model model) {
         model.addAttribute("product", new Product());
         return "AdminProduct/add_product";
     }
 
-    // Xử lý thêm sản phẩm
+    @Operation(summary = "Xử lý thêm sản phẩm", description = "Thêm một sản phẩm mới vào hệ thống.")
     @PostMapping("/add")
     public String addProduct(@ModelAttribute("product") Product product) {
         productRepository.save(product);
         return "redirect:/admin/products";
     }
 
-    // Hiển thị form chỉnh sửa sản phẩm
+    @Operation(summary = "Hiển thị form chỉnh sửa sản phẩm", description = "Hiển thị trang chỉnh sửa thông tin sản phẩm theo ID.")
     @GetMapping("/edit/{id}")
     public String showEditProductForm(@PathVariable("id") Long id, Model model) {
         Product product = productRepository.findById(id)
@@ -47,7 +50,7 @@ public class AdminProductController {
         return "AdminProduct/edit_product";
     }
 
-    // Xử lý cập nhật sản phẩm
+    @Operation(summary = "Xử lý cập nhật sản phẩm", description = "Cập nhật thông tin sản phẩm theo ID.")
     @PostMapping("/update/{id}")
     public String updateProduct(@PathVariable("id") Long id, @ModelAttribute("product") Product product) {
         Product existingProduct = productRepository.findById(id)
@@ -61,7 +64,7 @@ public class AdminProductController {
         return "redirect:/admin/products";
     }
 
-    // Xóa sản phẩm
+    @Operation(summary = "Xóa sản phẩm", description = "Xóa một sản phẩm theo ID.")
     @PostMapping("/delete/{id}")
     public String deleteProduct(@PathVariable("id") Long id) {
         productRepository.deleteById(id);
