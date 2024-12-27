@@ -6,8 +6,6 @@ import com.example.demo.model.Topic;
 import com.example.demo.reponsitory.ProductReponsitory;
 import com.example.demo.reponsitory.TopicReponsitory;
 import com.example.demo.service.CommentService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +19,6 @@ import java.util.List;
 @Controller
 @AllArgsConstructor
 @SessionAttributes("userdto")
-@Tag(name = "Home Controller", description = "API quản lý trang chủ")
 public class HomeController {
     private CommentService commentService;
 
@@ -36,7 +33,6 @@ public class HomeController {
         return new UserDto();
     }
 
-    @Operation(summary = "Hiển thị trang chủ", description = "Lấy danh sách chủ đề và sản phẩm để hiển thị trên trang chủ")
     @GetMapping("/home")
     public String showHomeForm(@ModelAttribute("userdto") UserDto userDto, Model model) {
         List<Topic> topics = topicReponsitory.findAll();

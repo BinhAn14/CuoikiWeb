@@ -6,7 +6,6 @@ import com.example.demo.model.Topic;
 import com.example.demo.model.User;
 import com.example.demo.reponsitory.CommentReponsitory;
 import com.example.demo.reponsitory.ReactReponsitory;
-import com.example.demo.service.CommentService;
 import com.example.demo.service.ReactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

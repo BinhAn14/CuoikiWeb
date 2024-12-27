@@ -10,10 +10,9 @@ import com.example.demo.reponsitory.UserReponsitory;
 import com.example.demo.service.CommentService;
 import com.example.demo.service.ReactService;
 import com.example.demo.service.TopicService;
-import com.example.demo.service.UserService;
-import io.swagger.v3.oas.annotations.Operation;
+
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import io.swagger.v3.oas.annotations.tags.Tag;
+
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,10 +26,8 @@ import java.util.Map;
 @Controller
 @AllArgsConstructor
 @SessionAttributes("userdto")
-@Tag(name = "Topic Controller", description = "API quản lý các chủ đề và bình luận")
 public class TopicController {
     private TopicService topicService;
-    private UserService userService;
     private CommentService commentService;
     private ReactService reactService;
 
@@ -50,7 +47,7 @@ public class TopicController {
         return new CommentDto();
     }
 
-    @Operation(summary = "Hiển thị chủ đề", description = "Hiển thị thông tin của một chủ đề cùng các bình luận liên quan")
+   
     @GetMapping("/topic/{id}")
     public String showTopicById(Model model, @PathVariable String id) {
         Topic topic = topicService.findTopicById(Integer.parseInt(id));
@@ -69,7 +66,6 @@ public class TopicController {
         return "topic";
     }
 
-    @Operation(summary = "Đăng bình luận", description = "Cho phép người dùng đăng bình luận vào một chủ đề")
     @PostMapping("/topic/{id}")
     public String postComment(@ModelAttribute("userdto") UserDto userDto,
                               @PathVariable String id,
@@ -83,7 +79,7 @@ public class TopicController {
         return "redirect:/topic/" + id;
     }
 
-    @Operation(summary = "React chủ đề", description = "Cho phép người dùng react (up/down) vào một chủ đề")
+
     @PostMapping("/topic/{id}/down")
     public String downReact(@ModelAttribute("userdto") UserDto userDto,
                             @PathVariable String id) {
@@ -96,7 +92,7 @@ public class TopicController {
         return "redirect:/topic/" + id;
     }
 
-    @Operation(summary = "React chủ đề", description = "Cho phép người dùng react (up/down) vào một chủ đề")
+
     @PostMapping("/topic/{id}/up")
     public String upReact(@ModelAttribute("userdto") UserDto userDto,
                           @PathVariable String id) {
@@ -109,7 +105,6 @@ public class TopicController {
         return "redirect:/topic/" + id;
     }
 
-    @Operation(summary = "React bình luận", description = "Cho phép người dùng react (up/down) vào một bình luận")
     @PostMapping("/comment/{id}/up")
     public String upcmtReact(@ModelAttribute("userdto") UserDto userDto,
                              @PathVariable String id) {
@@ -122,7 +117,6 @@ public class TopicController {
         return "redirect:/topic/" + comment.getTopic().getId();
     }
 
-    @Operation(summary = "React bình luận", description = "Cho phép người dùng react (up/down) vào một bình luận")
     @PostMapping("/comment/{id}/down")
     public String downcmtReact(@ModelAttribute("userdto") UserDto userDto,
                                @PathVariable String id) {

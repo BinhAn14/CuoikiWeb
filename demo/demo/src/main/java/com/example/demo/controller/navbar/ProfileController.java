@@ -7,9 +7,9 @@ import com.example.demo.model.User;
 import com.example.demo.reponsitory.ProfileReponsitory;
 import com.example.demo.service.ProfileService;
 import com.example.demo.service.UserService;
-import io.swagger.v3.oas.annotations.Operation;
+
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import io.swagger.v3.oas.annotations.tags.Tag;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @NoArgsConstructor
 @AllArgsConstructor
 @SessionAttributes("userdto")
-@Tag(name = "Profile Controller", description = "API quản lý thông tin hồ sơ người dùng")
 public class ProfileController {
     @Autowired
     private UserService userService;
@@ -43,7 +42,7 @@ public class ProfileController {
         return new ProfileDto();
     }
 
-    @Operation(summary = "Hiển thị thông tin hồ sơ người dùng", description = "Hiển thị thông tin hồ sơ của người dùng đã đăng nhập.")
+
     @GetMapping("/profile")
     public String showprofile(@ModelAttribute("userdto") UserDto userDto, Model model) {
         User user = userService.getUserbyEmail(userDto.getEmail());
@@ -56,7 +55,7 @@ public class ProfileController {
         return "profile";
     }
 
-    @Operation(summary = "Cập nhật thông tin hồ sơ", description = "Cập nhật các thông tin hồ sơ như địa chỉ, ngày sinh, giới tính, tên...")
+    
     @PostMapping("/profile/{id}")
     public String getprofile(@SessionAttribute("userdto") UserDto userDto,
                              @PathVariable String id,

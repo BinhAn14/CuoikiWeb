@@ -11,14 +11,12 @@ import java.util.List;
 @Service
 public class ProductService {
     @Autowired
-    private ProductReponsitory productRepository; // Sửa lỗi chính tả từ "ProductReponsitory" thành "ProductRepository"
+    private ProductReponsitory productRepository; 
 
-    // Lấy tất cả sản phẩm
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
-    // Lấy sản phẩm theo ID
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
     }

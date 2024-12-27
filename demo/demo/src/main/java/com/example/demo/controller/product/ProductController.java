@@ -15,12 +15,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/products")
-@Tag(name = "Product Controller", description = "API quản lý sản phẩm")
 public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @Operation(summary = "Lấy danh sách tất cả sản phẩm", description = "API này trả về danh sách tất cả sản phẩm trong hệ thống.")
+
     @GetMapping
     public String listProducts(Model model) {
         List<Product> products = productService.getAllProducts();
@@ -28,7 +27,7 @@ public class ProductController {
         return "list"; 
     }
 
-    @Operation(summary = "Xem chi tiết sản phẩm", description = "API này trả về chi tiết thông tin của một sản phẩm theo ID.")
+ 
     @GetMapping("/{id}")
     public String viewProduct(@PathVariable Long id, Model model) {
         Product product = productService.getProductById(id);
